@@ -45,7 +45,7 @@ const PORT = process.env.PORT || 5000;
 const startServer = async () => {
   try {
     await sequelize.authenticate();
-    console.log('✅ Database connected.');
+    console.log('Database connected.');
 
     // Sync database (Use { force: true } carefully if you want to drop tables and recreate)
     // Here we'll use alter to keep data but update schema if needed
@@ -53,18 +53,18 @@ const startServer = async () => {
     
     if (shouldSeed) {
       await sequelize.sync({ force: true });
-      console.log('✅ Database synced (force: true)');
+      console.log('Database synced (force: true)');
       await seedDatabase();
     } else {
       await sequelize.sync({ alter: true }); 
-      console.log('✅ Database synced');
+      console.log('Database synced');
     }
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
-    console.error('❌ Unable to connect to the database:', error);
+    console.error('Unable to connect to the database:', error);
   }
 };
 
