@@ -62,19 +62,19 @@ const states = [
 
 const seedDatabase = async () => {
   try {
-    console.log('🌱 Seeding skills...');
+    console.log('Seeding skills...');
     for (const sk of skills) {
       await Skill.findOrCreate({ where: { name: sk.name }, defaults: sk });
     }
 
-    console.log('🌱 Seeding admin user...');
+    console.log('Seeding admin user...');
     const hash = await bcrypt.hash('Admin@123', 12);
     const [admin] = await User.findOrCreate({
       where: { email: 'admin@talentsync.com' },
       defaults: { name: 'TalentSync Admin', email: 'admin@talentsync.com', password_hash: hash, role: 'admin', state: 'Islamabad Capital Territory', bio: 'System Administrator', is_available: false },
     });
 
-    console.log('🌱 Seeding demo users...');
+    console.log('Seeding demo users...');
     const demoUsers = [
       { name: 'Ammar Ahmed', email: 'ammar@demo.com', state: 'Punjab', bio: 'Full-stack developer passionate about building impactful products.', skillNames: ['React', 'Node.js', 'MySQL', 'Docker'] },
       { name: 'Fatima Ali', email: 'fatima@demo.com', state: 'Sindh', bio: 'UI/UX designer with a love for creating intuitive interfaces.', skillNames: ['Figma', 'UI/UX Design', 'Adobe XD', 'React'] },
@@ -101,9 +101,9 @@ const seedDatabase = async () => {
       }
     }
 
-    console.log('✅ Seeding complete!');
+    console.log('Seeding complete!');
   } catch (err) {
-    console.error('❌ Seed error:', err.message);
+    console.error('Seed error:', err.message);
   }
 };
 
