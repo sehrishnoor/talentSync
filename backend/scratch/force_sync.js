@@ -5,9 +5,9 @@ async function sync() {
     await sequelize.authenticate();
     console.log('Database connected.');
     await sequelize.sync({ alter: true });
-    console.log('✅ Database Synced with alter:true');
+    console.log('Database Synced with alter:true');
   } catch (err) {
-    console.error('❌ Sync failed:', err);
+    console.error('Sync failed:', err);
   } finally {
     process.exit();
   }
