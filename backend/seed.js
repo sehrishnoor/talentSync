@@ -7,11 +7,11 @@ const run = async () => {
     try {
         await sequelize.authenticate();
         await sequelize.sync({ force: true });
-        console.log('✅ Database successfully dropped and re-synced.');
+        console.log('Database successfully dropped and re-synced.');
         await seedDatabase();
         process.exit(0);
     } catch(err) {
-        console.error('❌ Migration failed:', err);
+        console.error('Migration failed:', err);
         process.exit(1);
     }
 };
