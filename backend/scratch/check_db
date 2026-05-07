@@ -1,1 +1,20 @@
+const { sequelize } = require('../src/models');
+
+async function check() {
+  try {
+    await sequelize.authenticate();
+    const [results] = await sequelize.query("SHOW TABLES LIKE 'Connections';");
+    if (results.length > 0) {
+      console.log('TABLE Connections EXISTS');
+    } else {
+      console.log('TABLE Connections MISSING');
+    }
+  } catch (err) {
+    console.error(err);
+  } finally {
+    process.exit();
+  }
+}
+
+check();
 
